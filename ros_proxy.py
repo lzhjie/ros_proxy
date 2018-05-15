@@ -134,6 +134,9 @@ def do_main():
             time.sleep(max(sleep_time, 1))
         except (SystemExit, KeyboardInterrupt):
             break
+        except socket.error:
+            ros_adapter = RosProxy(options.get("ip"), options.get("port"),
+                                   options.get("user"), options.get("password"))
         except:
             print traceback.print_exc()
 
